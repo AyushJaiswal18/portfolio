@@ -109,6 +109,14 @@
 }
 
 @media (max-width: 768px) {
+  .nav-container {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-logo {
+    font-size: 1.2rem;
+  }
+
   .mobile-menu-toggle {
     display: flex;
   }
@@ -129,6 +137,16 @@
 
   .nav-menu.active {
     transform: translateX(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0.875rem 1rem;
+  }
+
+  .nav-logo {
+    font-size: 1rem;
   }
 }
 

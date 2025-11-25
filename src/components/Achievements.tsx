@@ -1,20 +1,7 @@
+import { achievements } from '../constants/portfolioData'
 import './Achievements.css'
 
 const Achievements = () => {
-  const achievements = [
-    {
-      type: 'Patent',
-      title: 'Bluetooth-Enabled Stethoscope with Integrated Heart Rate Monitor',
-      applicationNumber: '202411094555',
-      date: 'Dec 2024',
-    },
-    {
-      type: 'Award',
-      title: "Dean's Excellence Award in Academics",
-      count: 3,
-      organization: 'Manipal University Jaipur',
-    },
-  ]
 
   return (
     <section id="achievements" className="achievements">

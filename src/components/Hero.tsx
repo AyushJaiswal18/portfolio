@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { personalInfo, heroData } from '../constants/portfolioData'
 import './Hero.css'
 
 const Hero = () => {
@@ -30,6 +31,14 @@ const Hero = () => {
     }
   }
 
+  const codeBlock = `const developer = {
+  name: "${heroData.codeBlock.name}",
+  role: "${heroData.codeBlock.role}",
+  location: "${heroData.codeBlock.location}",
+  skills: ${JSON.stringify(heroData.codeBlock.skills)},
+  passion: "${heroData.codeBlock.passion}"
+};`
+
   return (
     <section id="home" className="hero" ref={heroRef}>
       <div className="hero-background">
@@ -39,17 +48,13 @@ const Hero = () => {
       </div>
       <div className="hero-content">
         <div className="hero-text">
-          <p className="hero-greeting">Hi, my name is</p>
+          <p className="hero-greeting">{heroData.greeting}</p>
           <h1 className="hero-name">
-            <span className="name-line">Ayush</span>
-            <span className="name-line">Jaiswal</span>
+            <span className="name-line">{personalInfo.firstName}</span>
+            <span className="name-line">{personalInfo.lastName}</span>
           </h1>
-          <h2 className="hero-title">I build things for the web.</h2>
-          <p className="hero-description">
-            Full-Stack Web Developer proficient in MERN stack, Python, JavaScript, and DevOps 
-            with hands-on experience in AI and autonomous agent development. I build scalable 
-            web applications and automate workflows.
-          </p>
+          <h2 className="hero-title">{heroData.title}</h2>
+          <p className="hero-description">{heroData.description}</p>
           <div className="hero-buttons">
             <button className="btn btn-primary" onClick={scrollToProjects}>
               View My Work
@@ -74,13 +79,7 @@ const Hero = () => {
               <span className="code-dot"></span>
             </div>
             <pre className="code-content">
-              <code>{`const developer = {
-  name: "Ayush Jaiswal",
-  role: "Full Stack Developer",
-  location: "Jaipur, Rajasthan",
-  skills: ["MERN", "Python", "DevOps"],
-  passion: "Building scalable applications"
-};`}</code>
+              <code>{codeBlock}</code>
             </pre>
           </div>
         </div>

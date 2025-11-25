@@ -15,6 +15,11 @@ section {
   overflow: hidden;
 }
 
+/* Override min-height for specific sections */
+section#skills {
+  min-height: auto;
+}
+
 .section-container {
   max-width: 1200px;
   margin: 0 auto;

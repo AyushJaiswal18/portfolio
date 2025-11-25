@@ -102,8 +102,41 @@
 }
 
 @media (max-width: 768px) {
+  .achievements {
+    padding: 60px 15px;
+  }
+
   .achievements-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .achievement-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .achievements {
+    padding: 50px 10px;
+  }
+
+  .achievements-grid {
+    gap: 1rem;
+  }
+
+  .achievement-card {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .achievement-title {
+    font-size: 1.1rem;
+  }
+
+  .achievement-icon {
+    width: 56px;
+    height: 56px;
   }
 }
 
