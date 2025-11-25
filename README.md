@@ -1,129 +1,123 @@
-```markdown
-# React/Vite Frontend Auto-Deploy Template
+# Developer Portfolio
 
-Template for deploying React/Vite apps with auto-deployment via GitHub Actions + Traefik.
+A modern, aesthetic portfolio website built with React, TypeScript, and Vite. Features a dark theme with smooth animations and a responsive design.
 
-## Quick Start
+## Features
 
-### 1. Use This Template
-Click "Use this template" button on GitHub to create your project.
+- 🎨 Modern dark theme with gradient accents
+- 📱 Fully responsive design
+- ⚡ Built with Vite for fast development and builds
+- 🎭 Smooth scroll animations and transitions
+- 🧩 Modular component architecture
+- 🚀 Ready for deployment with Docker
 
-### 2. Setup on Server (First Time Only)
+## Sections
+
+- **Hero**: Eye-catching introduction with animated background
+- **About**: Personal information and technologies
+- **Skills**: Interactive skill bars and technology showcase
+- **Projects**: Featured projects with links and tech stacks
+- **Contact**: Contact form and social media links
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/portfolio.git
+cd portfolio
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+The site will be available at `http://localhost:3000`
+
+### Build for Production
 
 ```bash
-# SSH into your server
-ssh deploy@your_server_ip
-
-# Clone your new project
-cd ~/projects
-git clone https://github.com/yourusername/your-frontend-project.git
-cd your-frontend-project
-
-# Setup environment variables (optional for frontend)
-cp .env.example .env
-nano .env  # Add your actual values if needed
+npm run build
 ```
 
-### 3. Add GitHub Secrets
+The production build will be in the `dist` folder.
 
-Go to your repo: Settings → Secrets and variables → Actions → New repository secret
-
-Add these 5 secrets:
-
-| Secret Name | Description | How to Get | Example |
-|------------|-------------|------------|---------|
-| `SERVER_IP` | Your VPS IP address | DigitalOcean dashboard | `123.45.67.89` |
-| `SSH_PRIVATE_KEY` | SSH private key for server access | Run on LOCAL: `cat ~/.ssh/id_rsa` and copy entire output | Starts with `-----BEGIN...` |
-| `PROJECT_NAME` | Unique name for this project (container & folder name) | Choose any name (lowercase, no spaces) | `my-app` or `dashboard` |
-| `DOMAIN` | Domain/subdomain where app will be accessible | Your domain with subdomain | `app.builtwithayush.tech` |
-| `APP_PORT` | Nginx port (always 80 for React) | Always use `80` | `80` |
-
-**Important Notes:**
-- `PROJECT_NAME` must match your folder name in `~/projects/` on server
-- `DOMAIN` must have DNS A record pointing to your `SERVER_IP`
-- `APP_PORT` is always `80` for React/Vite apps (Nginx serves on port 80)
-- Frontend env variables must start with `VITE_` to be included in build
-
-### 4. Deploy
+### Preview Production Build
 
 ```bash
-# Push to trigger auto-deployment
-git add .
-git commit -m "initial setup"
-git push origin main
+npm run preview
 ```
 
-GitHub Actions will automatically build and deploy to your server!
+## Customization
 
-## Environment Variables
+### Update Personal Information
 
-**For Vite apps:**
-- Env variables must be prefixed with `VITE_`
-- They are baked into the build at compile time
-- Access in code: `import.meta.env.VITE_API_URL`
-- To update: change locally, commit, push (triggers rebuild)
+1. **Hero Section** (`src/components/Hero.tsx`):
+   - Update name, title, and description
+   - Modify the code block content
 
-## Build Output
+2. **About Section** (`src/components/About.tsx`):
+   - Add your bio and information
+   - Update the technologies list
+   - Add your photo (replace the placeholder)
 
-- Vite builds to `/dist` folder
-- Dockerfile copies build to Nginx
-- Nginx serves static files on port 80
+3. **Skills Section** (`src/components/Skills.tsx`):
+   - Update skill categories and proficiency levels
 
-## Manual Deploy
+4. **Projects Section** (`src/components/Projects.tsx`):
+   - Add your actual projects
+   - Update GitHub and demo links
+   - Add project images
 
-If needed, SSH to server:
+5. **Contact Section** (`src/components/Contact.tsx`):
+   - Update social media links
+   - Configure email address
+   - Connect form to your backend/email service
 
-```bash
-cd ~/projects/your-project
-git pull
-docker build -t your-project .
-docker stop your-project || true
-docker rm your-project || true
-docker run -d \
-  --name your-project \
-  --restart unless-stopped \
-  --network web \
-  --label "traefik.enable=true" \
-  --label "traefik.http.routers.your-project.rule=Host(\`your-domain.com\`)" \
-  --label "traefik.http.routers.your-project.entrypoints=websecure" \
-  --label "traefik.http.routers.your-project.tls.certresolver=letsencrypt" \
-  --label "traefik.http.services.your-project.loadbalancer.server.port=80" \
-  your-project
-```
+### Styling
 
-## Troubleshooting
+The color scheme can be customized in `src/index.css` by modifying the CSS variables:
 
-**View logs:**
-```bash
-docker logs your-project-name
-```
-
-**Check if running:**
-```bash
-docker ps
-```
-
-**Restart:**
-```bash
-docker restart your-project-name
-```
-
-**Check Traefik dashboard:**
-```
-http://your_server_ip:8080
-```
-
-## API Integration
-
-To connect frontend to backend API, update `nginx.conf`:
-
-```nginx
-location /api {
-    proxy_pass http://api.yourdomain.com;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
+```css
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --accent-primary: #6366f1;
+  --accent-secondary: #8b5cf6;
+  /* ... */
 }
 ```
 
-Or use full URL in your frontend: `VITE_API_URL=https://api.yourdomain.com`
+## Deployment
+
+This project includes Docker configuration for easy deployment. See the deployment section in the original template README for instructions on using GitHub Actions with Traefik.
+
+### Docker Build
+
+```bash
+docker build -t portfolio .
+docker run -p 80:80 portfolio
 ```
+
+## Tech Stack
+
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **CSS3** - Styling with custom properties
+
+## License
+
+ISC
