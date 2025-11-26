@@ -9,15 +9,14 @@ main {
 
 /* Section Styling */
 section {
-  min-height: 100vh;
   padding: 80px 20px;
   position: relative;
   overflow: hidden;
 }
 
-/* Override min-height for specific sections */
-section#skills {
-  min-height: auto;
+/* Only Hero section should be full viewport height */
+section#home {
+  min-height: 100vh;
 }
 
 .section-container {

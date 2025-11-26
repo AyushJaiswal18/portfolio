@@ -80,6 +80,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  text-align: left;
 }
 
 .hero-greeting {
@@ -94,14 +95,19 @@
   font-weight: 700;
   line-height: 1.1;
   margin: 0;
+  white-space: nowrap;
 }
 
 .name-line {
-  display: block;
+  display: inline;
   background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.name-line:first-child::after {
+  content: ' ';
 }
 
 .hero-title {
@@ -123,6 +129,7 @@
   display: flex;
   gap: 1.5rem;
   margin-top: 2rem;
+  justify-content: flex-start;
 }
 
 .btn {
@@ -278,8 +285,16 @@
 }
 
 @media (max-width: 968px) {
+  .hero {
+    padding: 100px 20px 60px;
+  }
+
   .hero-content {
     grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-text {
     text-align: center;
   }
 
@@ -298,11 +313,29 @@
   .hero-visual {
     order: -1;
   }
+
+  .code-block {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 90px 15px 50px;
+    min-height: 100vh;
+  }
+
+  .hero-content {
+    gap: 2.5rem;
+  }
+
+  .hero-greeting {
+    font-size: 1rem;
+  }
+
   .hero-name {
     font-size: 2.5rem;
+    white-space: nowrap;
   }
 
   .hero-title {
@@ -311,11 +344,150 @@
 
   .hero-description {
     font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
   }
 
   .btn {
     padding: 0.875rem 1.5rem;
     font-size: 0.9rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .code-block {
+    max-width: 100%;
+  }
+
+  .code-content {
+    padding: 1rem;
+  }
+
+  .code-content code {
+    font-size: 0.8rem;
+  }
+
+  .orb-1 {
+    width: 250px;
+    height: 250px;
+    top: -125px;
+    left: -125px;
+  }
+
+  .orb-2 {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    right: -100px;
+  }
+
+  .orb-3 {
+    width: 150px;
+    height: 150px;
+  }
+
+  .scroll-indicator {
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 80px 10px 40px;
+  }
+
+  .hero-content {
+    gap: 2rem;
+  }
+
+  .hero-greeting {
+    font-size: 0.9rem;
+  }
+
+  .hero-name {
+    font-size: 2rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .hero-buttons {
+    gap: 0.875rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+  }
+
+  .code-block {
+    border-radius: 8px;
+  }
+
+  .code-header {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .code-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .code-content {
+    padding: 0.875rem;
+  }
+
+  .code-content code {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .orb-1 {
+    width: 200px;
+    height: 200px;
+    top: -100px;
+    left: -100px;
+  }
+
+  .orb-2 {
+    width: 150px;
+    height: 150px;
+    bottom: -75px;
+    right: -75px;
+  }
+
+  .orb-3 {
+    width: 120px;
+    height: 120px;
+  }
+
+  .scroll-indicator {
+    bottom: 15px;
+    display: none; /* Hide on very small screens */
+  }
+
+  .mouse {
+    width: 20px;
+    height: 32px;
+  }
+
+  .wheel {
+    width: 3px;
+    height: 6px;
   }
 }
 
